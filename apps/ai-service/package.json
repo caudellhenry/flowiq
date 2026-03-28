@@ -1,0 +1,12 @@
+{
+  "name": "@flowiq/ai-service",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "python main.py",
+    "build": "echo 'Python service — no build step'",
+    "lint": "ruff check .",
+    "test": "pytest",
+    "clean": "find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null; find . -name '*.pyc' -delete 2>/dev/null; true"
+  }
+}

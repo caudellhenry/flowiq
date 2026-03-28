@@ -1,0 +1,27 @@
+{
+  "name": "@flowiq/api",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint src --ext .ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@fastify/cors": "^9.0.1",
+    "@fastify/env": "^4.4.0",
+    "@fastify/helmet": "^11.1.1",
+    "@flowiq/types": "workspace:*",
+    "fastify": "^4.28.1"
+  },
+  "devDependencies": {
+    "@flowiq/config": "workspace:*",
+    "@types/node": "^22.10.7",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

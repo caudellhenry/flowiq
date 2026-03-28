@@ -1,6 +1,6 @@
 import fp from "fastify-plugin";
 import type { FastifyPluginAsync, FastifyRequest, FastifyReply } from "fastify";
-import { createClerkClient } from "@clerk/backend";
+import { createClerkClient, verifyToken } from "@clerk/backend";
 import { prisma } from "@flowiq/db";
 import type { User, Company, UserRole } from "@flowiq/db";
 
@@ -18,7 +18,9 @@ declare module "fastify" {
 }
 
 const authPlugin: FastifyPluginAsync = async (app) => {
-  const clerk = createClerkClient({ secretKey: app.config.CLERK_SECRET_KEY });
+  // createClerkClient retained for future API operations (users, orgs, etc.)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _clerk = createClerkClient({ secretKey: app.config.CLERK_SECRET_KEY });
 
   app.decorateRequest("auth", null);
   app.decorateRequest("currentUser", null);
@@ -30,7 +32,9 @@ const authPlugin: FastifyPluginAsync = async (app) => {
     if (!token) return;
 
     try {
-      const payload = await clerk.verifyToken(token);
+      const payload = await verifyToken(token, {
+        secretKey: app.config.CLERK_SECRET_KEY,
+      });
       request.auth = {
         userId: payload.sub,
         orgId: (payload.org_id as string | undefined) ?? null,

@@ -27,3 +27,4 @@ venv
 coverage
 .pytest_cache
 *.egg-info
+tsconfig.tsbuildinfo

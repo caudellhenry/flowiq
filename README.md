@@ -68,6 +68,8 @@ Configure these in **Settings → Secrets and variables → Actions** on the Git
 | `AWS_ACCOUNT_ID` | 12-digit AWS account ID | AWS Console or `aws sts get-caller-identity` |
 | `STAGING_PRIVATE_SUBNET_IDS` | Comma-separated private subnet IDs for the migration ECS task (e.g. `subnet-abc,subnet-def`) | `terraform output` → VPC private subnets |
 | `STAGING_ECS_SECURITY_GROUP_ID` | Security group ID for ECS tasks | `terraform output` → ECS tasks SG |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk publishable key — needed at Docker **build** time for the web app | Clerk Dashboard → API Keys |
+| `CLERK_SECRET_KEY` | Clerk secret key — needed at Docker **build** time for the api | Clerk Dashboard → API Keys |
 
 ### AWS OIDC provider (one-time setup)
 
